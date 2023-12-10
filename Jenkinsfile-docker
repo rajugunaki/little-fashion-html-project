@@ -1,0 +1,38 @@
+pipeline {
+    agent { label "Projecta" }
+    
+    stages {
+        stage('1st stage - git clone') {
+            steps {
+                git branch: 'main', url: 'https://github.com/rajugunaki/little-fashion-html-project.git'          
+            }
+        }
+        stage('2nd stage - docker build image') {
+            steps {
+                sh ' docker build -t little-fashion .'          
+            }
+        }
+        stage('3rd stage - tag the image') {
+            steps {
+                sh ' docker tag little-fashion rajugunaki123/little-fashion:1.0 '          
+            }
+        }
+        stage('4th stage - run a container with docker image') {
+            steps {
+                sh ' docker stop little-fashion || true '
+                sh ' docker rm little-fashion || true '
+                sh ' docker run -itd --name little-fashion-container -p 92:80  rajugunaki123/little-fashion:1.0 '    
+            }
+        }
+        stage('5th stage - login to dockerhub') {
+            steps {
+                sh ' docker login -u rajugunaki123 -p Docker@1234'    
+            }
+        }
+        stage('6th stage - push the image to dockerhub') {
+            steps {
+                sh ' docker push rajugunaki123/little-fashion:1.0 '    
+            }
+        }
+    }
+}
