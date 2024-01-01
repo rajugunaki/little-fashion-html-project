@@ -4,7 +4,7 @@ pipeline {
     stages {
         stage('Git Clone ') {
             steps {
-                git branch: 'main', url: 'https://github.com/vincloud2/Litte_fashion_html_project.git'
+                git branch: 'main', url: 'https://github.com/rajugunaki/little-fashion-html-project.git'
             }
         }
         stage('install httpd') {
