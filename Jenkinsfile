@@ -15,9 +15,9 @@ pipeline {
         }        
         stage('Copy project to html path') {
             steps {
-                sh 'cd /var/jenkins/workspace/littefashion_html/'
+                sh 'cd  /var/jenkins/workspace/little_fashion_html/'
                 sh 'ls'
-                sh 'cp -r /var/jenkins/workspace/littefashion_html/* /var/www/html/'
+                sh 'cp -r  /var/jenkins/workspace/little_fashion_html/* /var/www/html/'
             }
         }        
     }
