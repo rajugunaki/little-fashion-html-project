@@ -13,11 +13,11 @@ pipeline {
                 sh 'systemctl start httpd'
             }
         }        
-        stage('Copy project to html path ') {
+        stage('Copy project to html path') {
             steps {
-                sh 'cd /var/jenkins/workspace/httod_littefashion/'
+                sh 'cd /var/jenkins/workspace/littefashion_html/'
                 sh 'ls'
-                sh 'cp -r /var/jenkins/workspace/httod_littefashion/* /var/www/html/'
+                sh 'cp -r /var/jenkins/workspace/littefashion_html/* /var/www/html/'
             }
         }        
     }
